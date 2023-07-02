@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Search Voice Assistant</title>
+  <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/8044/8044503.png">
+  <link rel="stylesheet" href="main1.css">
+</head>
+<body>
+  <h1><center> Напиши свой вопрос</center></h1>
+  <center><button onclick="searchAndVoice()">напиши мне свой вопрос</button></center>
+
+  <script>
+    function searchAndVoice() {
+      const query = prompt('Напишите то что хотели бы увидеть:'); // Prompt the user to enter a search query
+
+      // Construct the Google search URL
+      const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+
+      // Open a new window with the search URL
+      window.open(searchUrl, '_blank');
+
+      // Create a new SpeechSynthesisUtterance object
+      const utterance = new SpeechSynthesisUtterance();
+      utterance.lang = 'ru-RU'; // Set the language to Russian
+
+      // Speak the search query
+      utterance.text = query;
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+</body>
+</html>
